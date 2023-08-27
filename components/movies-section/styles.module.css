@@ -1,0 +1,54 @@
+.moviesSection {
+  margin-top: 36px;
+}
+
+.title {
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-size: 24px;
+  letter-spacing: -1px;
+  z-index: 10;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: 320px;
+  gap: 24px;
+}
+
+.movie {
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.movie:hover {
+  z-index: 9;
+  transform: scale(1.25);
+}
+.showMore {
+  margin-top: 20px;
+  color: white;
+}
+.movieTitle {
+  z-index: 1;
+  position: absolute;
+  padding: 5px;
+  color: black;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+.movieRating {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  color: red;
+  bottom: 0;
+  right: 4px;
+  background-color: antiquewhite;
+  padding: 2px;
+  font-weight: bold;
+}
