@@ -4,6 +4,7 @@ import {
   getPopularMovies,
   getSingleCategories,
   getTopRatedMovies,
+  searchCategoryMovie,
 } from "@/services/movie";
 
 async function Home({ params }) {
@@ -13,10 +14,12 @@ async function Home({ params }) {
     { results: topRatedMovies },
     { results: popularMovies },
     { genres: categories },
+    { results: searchCategory },
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
     getCategories(),
+    searchCategoryMovie(),
   ]);
 
   if (params.category?.length > 0) {
@@ -26,6 +29,7 @@ async function Home({ params }) {
 
   return (
     <HomeContainer
+      searchCategory={searchCategory}
       categories={categories}
       popularMovies={popularMovies}
       topRatedMovies={topRatedMovies}

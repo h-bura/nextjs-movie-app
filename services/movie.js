@@ -28,6 +28,10 @@ const getMovie = async (movieId) => {
   return fetchMovieApi(`/movie/${movieId}`);
 };
 
+const searchCategoryMovie = async () => {
+  return fetchMovieApi("/search/movie", `query=avatar`);
+};
+
 export {
   fetchMovieApi,
   getSingleCategories,
@@ -35,4 +39,5 @@ export {
   getPopularMovies,
   getCategories,
   getMovie,
+  searchCategoryMovie,
 };

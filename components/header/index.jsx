@@ -12,6 +12,10 @@ function Header() {
           TMDB-FILMS
         </Link>
         <div>
+          <Link href="/" className={styles.movies}>
+            MOVIES
+          </Link>
+
           <input className={styles.searchInput} placeholder="Search..." />
         </div>
       </div>

@@ -8,6 +8,7 @@ function HomeContainer({
   selectedCategory,
   popularMovies = [],
   categories = [],
+  searchCategory = [],
 }) {
   return (
     <div>
@@ -15,6 +16,10 @@ function HomeContainer({
         movie={popularMovies[Math.floor(Math.random() * popularMovies.length)]}
       />
       <Categories categories={categories} />
+
+      {searchCategory.length > 0 && (
+        <MoviesSection title="Search" movies={searchCategory} />
+      )}
 
       {selectedCategory.movies.length > 0 && (
         <MoviesSection

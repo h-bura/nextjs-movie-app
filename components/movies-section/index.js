@@ -13,7 +13,6 @@ function MoviesSection({ title, movies }) {
     setQuentity(isExpanded ? 7 : 20);
     setIsExpanded(!isExpanded);
   };
-
   return (
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
