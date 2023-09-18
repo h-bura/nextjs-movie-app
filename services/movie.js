@@ -27,9 +27,8 @@ const getTopRatedMovies = async () => {
 const getMovie = async (movieId) => {
   return fetchMovieApi(`/movie/${movieId}`);
 };
-
-const searchCategoryMovie = async () => {
-  return fetchMovieApi("/search/movie", `query=avatar`);
+const searchCategoryMovie = async (searchTerm) => {
+  return fetchMovieApi("/search/movie", `query=${searchTerm}`);
 };
 
 export {

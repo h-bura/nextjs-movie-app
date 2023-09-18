@@ -1,9 +1,23 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import styles from "./styles.module.css";
+import { useRouter } from "next/navigation";
 
 function Header() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/?search=${searchTerm}`);
+    setSearchTerm("");
+  };
+
+  const handleOnChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
@@ -12,11 +26,14 @@ function Header() {
           TMDB-FILMS
         </Link>
         <div>
-          <Link href="/" className={styles.movies}>
-            MOVIES
-          </Link>
-
-          <input className={styles.searchInput} placeholder="Search..." />
+          <form onSubmit={handleSubmit}>
+            <input
+              value={searchTerm}
+              onChange={handleOnChange}
+              className={styles.searchInput}
+              placeholder="Search..."
+            />
+          </form>
         </div>
       </div>
     </header>

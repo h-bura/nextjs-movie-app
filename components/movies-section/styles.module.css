@@ -33,6 +33,9 @@
   margin-top: 20px;
   color: white;
 }
+.showMore:hover {
+  color: yellow;
+}
 .movieTitle {
   z-index: 1;
   position: absolute;

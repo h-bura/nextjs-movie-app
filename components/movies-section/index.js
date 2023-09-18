@@ -17,25 +17,27 @@ function MoviesSection({ title, movies }) {
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.movies}>
-        {movies.slice(0, quentity).map((movie) => (
-          <div className={styles.movie} key={movie.id}>
-            <Link href={`/movie/${movie.id}`}>
-              <h3 className={styles.movieTitle}>{movie.title}</h3>
-              <Image
-                fill
-                unoptimized
-                alt={movie.title}
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              />
-            </Link>
-            <p className={styles.movieRating}>
-              <AiFillStar />
-              {movie.vote_average}
-            </p>
-          </div>
-        ))}
+        {movies.slice(0, quentity).map((movie) => {
+          const roundedVoteAverage = parseFloat(movie.vote_average).toFixed(1);
+          return (
+            <div className={styles.movie} key={movie.id}>
+              <Link href={`/movie/${movie.id}`}>
+                <h3 className={styles.movieTitle}>{movie.title}</h3>
+                <Image
+                  fill
+                  unoptimized
+                  alt={movie.title}
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                />
+              </Link>
+              <p className={styles.movieRating}>
+                <AiFillStar />
+                {roundedVoteAverage}
+              </p>
+            </div>
+          );
+        })}
       </div>
-
       <button className={styles.showMore} onClick={showHandler}>
         {isExpanded ? "Show Less" : "Show More"}
       </button>

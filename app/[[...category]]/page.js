@@ -7,26 +7,28 @@ import {
   searchCategoryMovie,
 } from "@/services/movie";
 
-async function Home({ params }) {
+async function Home({ params, searchParams }) {
   let selectedCategory;
+  let searchCategory;
 
   const [
     { results: topRatedMovies },
     { results: popularMovies },
     { genres: categories },
-    { results: searchCategory },
   ] = await Promise.all([
     getTopRatedMovies(),
     getPopularMovies(),
     getCategories(),
-    searchCategoryMovie(),
   ]);
 
   if (params.category?.length > 0) {
     const { results } = await getSingleCategories(params.category[0]);
     selectedCategory = results;
   }
-
+  if (searchParams.search?.length > 0) {
+    const { results } = await searchCategoryMovie(searchParams.search);
+    searchCategory = results;
+  }
   return (
     <HomeContainer
       searchCategory={searchCategory}

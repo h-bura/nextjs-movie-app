@@ -16,7 +16,7 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
     vote_count,
     runtime,
   } = movie;
-
+  const roundedVoteAverage = parseFloat(vote_average).toFixed(1);
   return (
     <div className={styles.movieWrapper}>
       <h1 className={styles.movieTitle}>{title}</h1>
@@ -35,7 +35,7 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
             </p>
           ))}
           <p>Release Date: {release_date}</p>
-          <p>Rating: {vote_average}</p>
+          <p>Rating: {roundedVoteAverage}</p>
           <p>Vote Count: {vote_count}</p>
           <p>Runtime: {runtime} min</p>
         </div>
