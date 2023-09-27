@@ -15,8 +15,10 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
     vote_average,
     vote_count,
     runtime,
+    original_language,
   } = movie;
   const roundedVoteAverage = parseFloat(vote_average).toFixed(1);
+  const language = original_language.toUpperCase();
   return (
     <div className={styles.movieWrapper}>
       <h1 className={styles.movieTitle}>{title}</h1>
@@ -38,6 +40,7 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
           <p>Rating: {roundedVoteAverage}</p>
           <p>Vote Count: {vote_count}</p>
           <p>Runtime: {runtime} min</p>
+          <p>Original Language:{language}</p>
         </div>
       )}
       <div className={styles.actionButtons}>
@@ -53,7 +56,11 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized
-          src={`https://image.tmdb.org/t/p/original${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/original${poster_path}`
+              : "https://images.freeimages.com/images/large-previews/7ab/film-strip-1194817.jpg"
+          }
           alt={title}
           fill
         />

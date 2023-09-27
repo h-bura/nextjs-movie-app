@@ -16,6 +16,7 @@ function MoviesSection({ title, movies }) {
   return (
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
+
       <div className={styles.movies}>
         {movies.slice(0, quentity).map((movie) => {
           const roundedVoteAverage = parseFloat(movie.vote_average).toFixed(1);
@@ -27,7 +28,11 @@ function MoviesSection({ title, movies }) {
                   fill
                   unoptimized
                   alt={movie.title}
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+                      : "https://images.freeimages.com/images/large-previews/7ab/film-strip-1194817.jpg"
+                  }
                 />
               </Link>
               <p className={styles.movieRating}>
@@ -38,6 +43,7 @@ function MoviesSection({ title, movies }) {
           );
         })}
       </div>
+
       <button className={styles.showMore} onClick={showHandler}>
         {isExpanded ? "Show Less" : "Show More"}
       </button>
